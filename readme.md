@@ -4,10 +4,6 @@
 
 CrowdChain is a decentralized crowdfunding platform that leverages blockchain technology to create transparent, secure, and community-driven funding solutions. The application features a modern React frontend with a Node.js/Express backend, designed with a brutalist aesthetic and comprehensive UI component system. The platform aims to eliminate intermediaries in crowdfunding through smart contracts and decentralized governance.
 
-## User Preferences
-
-Preferred communication style: Simple, everyday language.
-
 ## System Architecture
 
 ### Frontend Architecture
