@@ -17,6 +17,7 @@ export interface Project {
   createdAt: string;
   updatedAt: string;
   creatorId: string;
+  milestones?: any[];
   creator?: {
     username: string;
     firstName: string | null;
@@ -92,7 +93,7 @@ export function useInvestInProject() {
       // Show investment receipt with detailed information
       toast({
         title: "🎉 Investment Successful!",
-        description: `💰 Amount: $${data.transaction.amount} | 🔗 Hash: ${data.transaction.transactionHash} | 📦 Block: #${data.transaction.blockNumber} | ⛽ Gas: ${data.transaction.gasUsed} gas | 🕒 ${new Date(data.transaction.createdAt).toLocaleString()}`,
+        description: `💰 Amount: ${data.transaction.amount} LavaCoins | 🔗 Hash: ${data.transaction.transactionHash} | 📦 Block: #${data.transaction.blockNumber} | ⛽ Gas: ${data.transaction.gasUsed} gas | 🕒 ${new Date(data.transaction.createdAt).toLocaleString()}`,
         duration: 8000, // Show for 8 seconds so user can read the receipt
       });
     },

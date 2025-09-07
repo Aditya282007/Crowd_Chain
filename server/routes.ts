@@ -519,9 +519,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ error: "Project not found or not approved" });
       }
 
+      // Check if investment would exceed the goal
+      const currentAmount = parseFloat(project.currentAmount || "0");
+      const goalAmount = parseFloat(project.goalAmount || "0");
+      const investmentAmount = parseFloat(amount);
+      const remainingAmount = goalAmount - currentAmount;
+
+      if (investmentAmount > remainingAmount) {
+        return res.status(400).json({ error: `Investment amount exceeds remaining goal. Maximum investment: ${remainingAmount.toFixed(2)} LavaCoins` });
+      }
+
+      if (remainingAmount <= 0) {
+        return res.status(400).json({ error: "Project funding goal has already been reached" });
+      }
+
       const user = await storage.getUser(req.user!.id);
       if (!user || parseFloat(user.balance || "0") < parseFloat(amount)) {
-        return res.status(400).json({ error: "Insufficient balance" });
+        return res.status(400).json({ error: "Insufficient LavaCoin balance" });
       }
 
       // Create transaction

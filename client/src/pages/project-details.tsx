@@ -3,13 +3,14 @@ import { ArrowLeft, Heart, Share2, Clock, Users, Target, TrendingUp, CheckCircle
 import { Link, useParams } from "wouter";
 import { WalletSimulator } from "../components/wallet-simulator";
 import { useAuth } from "../hooks/useAuth";
-import { useProject } from "../hooks/useProjects";
+import { useProject, useInvestInProject } from "../hooks/useProjects";
 
 export default function ProjectDetails() {
   const [isLiked, setIsLiked] = useState(false);
   const [investAmount, setInvestAmount] = useState("");
   const { user } = useAuth();
   const { id } = useParams<{ id: string }>();
+  const investMutation = useInvestInProject();
   
   const { data: project, isLoading, error } = useProject(id || "");
 
@@ -53,10 +54,20 @@ export default function ProjectDetails() {
   // Parse milestones if they exist
   const milestones = project.milestones ? (Array.isArray(project.milestones) ? project.milestones : []) : [];
 
-  const handleInvest = () => {
-    if (!investAmount) return;
-    console.log("Investing:", investAmount);
-    // Handle investment logic
+  const handleInvest = (amount: string) => {
+    if (!amount || !id) return;
+    
+    // Check if investment would exceed goal
+    const investmentAmount = parseFloat(amount);
+    const remainingAmount = goalAmount - currentAmount;
+    
+    if (investmentAmount > remainingAmount) {
+      // Adjust investment to not exceed goal
+      const adjustedAmount = remainingAmount.toString();
+      investMutation.mutate({ projectId: id, amount: adjustedAmount });
+    } else {
+      investMutation.mutate({ projectId: id, amount });
+    }
   };
 
   const handleLike = () => {

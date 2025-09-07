@@ -25,26 +25,26 @@ export function WalletSimulator({ onInvest, projectId, className }: WalletSimula
     { 
       name: 'MetaMask', 
       icon: '🦊', 
-      description: 'Most popular Ethereum wallet',
-      balance: '1000.00 ETH'
+      description: 'Most popular Web3 wallet',
+      balance: '1000.00 LavaCoins'
     },
     { 
       name: 'Rainbow', 
       icon: '🌈', 
       description: 'Beautiful & user-friendly',
-      balance: '875.50 ETH'
+      balance: '875.50 LavaCoins'
     },
     { 
       name: 'Coinbase Wallet', 
       icon: '💎', 
       description: 'Secure & trusted',
-      balance: '1250.75 ETH'
+      balance: '1250.75 LavaCoins'
     },
     { 
       name: 'WalletConnect', 
       icon: '🔗', 
       description: 'Connect any wallet',
-      balance: '950.25 ETH'
+      balance: '950.25 LavaCoins'
     }
   ];
 
@@ -60,7 +60,7 @@ export function WalletSimulator({ onInvest, projectId, className }: WalletSimula
       setAddress(mockAddress);
       
       const selectedWalletData = walletTypes.find(w => w.name === walletType);
-      setBalance(selectedWalletData?.balance.replace(' ETH', '') || '1000.00');
+      setBalance(selectedWalletData?.balance.replace(' LavaCoins', '') || '1000.00');
       setSelectedWallet(walletType);
       setIsConnected(true);
       setShowWallets(false);
@@ -214,8 +214,8 @@ export function WalletSimulator({ onInvest, projectId, className }: WalletSimula
         {/* Balance */}
         <div className="p-3 bg-gray-50 border-2 border-black rounded">
           <p className="text-xs font-bold text-gray-600">BALANCE</p>
-          <p className="text-2xl font-black">{balance} ETH</p>
-          <p className="text-xs text-gray-500">≈ ${(parseFloat(balance) * 2400).toLocaleString()} USD</p>
+          <p className="text-2xl font-black">{balance} LavaCoins</p>
+          <p className="text-xs text-gray-500">≈ ${(parseFloat(balance) * 3.50).toLocaleString()} USD</p>
         </div>
 
         {/* Investment Section */}
@@ -283,7 +283,7 @@ export function WalletSimulator({ onInvest, projectId, className }: WalletSimula
                   Processing Transaction...
                 </>
               ) : (
-                `Invest ${investAmount || '0'} ETH`
+                `Invest ${investAmount || '0'} LavaCoins`
               )}
             </Button>
           </div>
