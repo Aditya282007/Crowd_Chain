@@ -4,7 +4,11 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
+<<<<<<< HEAD
     "dev": "cross-env NODE_ENV=development tsx server/index.ts",
+=======
+    "dev": "tsx server/index.ts NODE_ENV=development ",
+>>>>>>> 0723cc55d00864dc9755b9c1863a37551a69f5c4
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "check": "tsc",
