@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { InstallPWAPrompt } from "@/components/install-pwa-prompt";
 import { useAuth } from "@/hooks/useAuth";
 import { useWebSocket } from "@/hooks/useWebSocket";
 import NotFound from "@/pages/not-found";
@@ -44,6 +45,7 @@ function Router() {
         )}
         <Route component={NotFound} />
       </Switch>
+      <InstallPWAPrompt />
     </div>
   );
 }
