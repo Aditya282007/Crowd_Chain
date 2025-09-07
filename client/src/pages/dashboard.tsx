@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useDashboard } from "@/hooks/useDashboard";
-import { useCreateProject, useProjects } from "@/hooks/useProjects";
+import { useCreateProject, useProjects, useInvestInProject } from "@/hooks/useProjects";
 import { useCreateCreatorRequest } from "@/hooks/useCreatorRequests";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
