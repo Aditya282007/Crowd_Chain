@@ -34,7 +34,7 @@ export default defineConfig({
     hmr: {
       clientPort: 443,
     },
-    allowedHosts: "all",
+    allowedHosts: true,
     fs: {
       strict: true,
       deny: ["**/.*"],
